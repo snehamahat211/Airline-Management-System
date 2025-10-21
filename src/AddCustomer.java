@@ -72,6 +72,18 @@ public class AddCustomer extends JFrame {
         buttonGroup.add(male);
         buttonGroup.add(female);
 
+        JLabel phone = new JLabel("Phone:");
+        Address.setFont(new Font("Arial", Font.BOLD, 15));
+        Address.setBounds(80, 390, 150, 20);
+        add(phone);
+
+        phonefield= new JTextField();
+        phonefield.setFont(new Font("Arial", Font.BOLD, 20));
+        phonefield.setBounds(210, 390, 250, 30);
+        add(phonefield);
+
+
+
 
 
 
