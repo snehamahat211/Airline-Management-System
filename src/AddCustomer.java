@@ -5,6 +5,7 @@ import java.awt.*;
 public class AddCustomer extends JFrame {
     JTextField nameTextField,nationfield,citizenfield,addressfield,phonefield;
     JRadioButton male,female;
+    JButton save;
     AddCustomer (){
 
         setLayout(null);
@@ -61,11 +62,13 @@ public class AddCustomer extends JFrame {
         male = new JRadioButton("Male");
         male.setFont(new Font("Arial", Font.BOLD, 20));
         male.setBounds(210, 340, 90, 15);
+        male.setBackground(Color.WHITE);
         add(male);
 
         female = new JRadioButton("Female");
         female.setFont(new Font("Arial", Font.BOLD, 20));
         female.setBounds(340, 340, 100, 15);
+        female.setBackground(Color.WHITE);
         add(female);
 
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -81,6 +84,10 @@ public class AddCustomer extends JFrame {
         phonefield.setFont(new Font("Arial", Font.BOLD, 20));
         phonefield.setBounds(210, 390, 250, 30);
         add(phonefield);
+
+        save=new JButton("SAVE");
+        save.setBackground(Color.BLACK);
+        setVisible(true);
 
 
 
