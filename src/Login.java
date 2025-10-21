@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
+import java.sql.*;
 import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener {
@@ -51,14 +51,16 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==submit){
             String username=user.getText();
-            String password=pw.getText();
+            String password=pw.getPassword().toString();
 
             try{
                 Conn c=new Conn();
-                String query="Select * from Login where username='"+username+"' and password='"+password+"'";
+                String query="Select * from login where username='"+username+"' and password='"+password+"'";
                 ResultSet rs=c.s.executeQuery(query);
                 if(rs.next()){
                     JOptionPane.showMessageDialog(null,"Login Successfull");
+                    new Home();
+                    setVisible(false);
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Invalid Username or Password");
