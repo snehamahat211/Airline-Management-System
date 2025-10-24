@@ -87,7 +87,10 @@ public class AddCustomer extends JFrame {
 
         save=new JButton("SAVE");
         save.setBackground(Color.BLACK);
-        setVisible(true);
+        save.setForeground(Color.WHITE);
+        save.setBounds(220,440,150,30);
+        add(save);
+
 
 
 
@@ -103,6 +106,7 @@ public class AddCustomer extends JFrame {
 
         getContentPane().setBackground(Color.WHITE);
         setSize(750, 750);
+        setLocation(300,150);
         setVisible(true);
 
 
