@@ -91,6 +91,12 @@ public class AddCustomer extends JFrame {
         save.setBounds(220,440,150,30);
         add(save);
 
+        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("employee.png"));
+        JLabel lblimage=new JLabel(image);
+        lblimage.setBounds(470,120,220,200);
+        add(lblimage);
+
+
 
 
 
