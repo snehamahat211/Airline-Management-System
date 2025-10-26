@@ -27,21 +27,21 @@ public class Home extends JFrame implements ActionListener{
         JMenu details=new JMenu("Details");
         menubar.add(details);
 
-        JMenuItem FlightDetails=new JMenu("Flight Details");
+        JMenuItem FlightDetails=new JMenuItem("Flight Details");
         FlightDetails.addActionListener(this);
         details.add(FlightDetails);
 
-        JMenuItem customerDetails=new JMenu("Add Customer Details");
+        JMenuItem customerDetails=new JMenuItem("Add Customer Details");
         customerDetails.addActionListener(this);
         details.add(customerDetails);
 
-        JMenuItem bookFlight =new JMenu("Book Flight");
+        JMenuItem bookFlight =new JMenuItem("Book Flight");
         details.add(bookFlight);
 
-        JMenuItem journeyDetails=new JMenu("Journey Details");
+        JMenuItem journeyDetails=new JMenuItem("Journey Details");
         details.add(journeyDetails);
 
-        JMenuItem ticketCancel =new JMenu("Cancel Ticket");
+        JMenuItem ticketCancel =new JMenuItem("Cancel Ticket");
         details.add(ticketCancel);
 
         JMenu ticket=new JMenu("Ticket");
@@ -77,7 +77,16 @@ public class Home extends JFrame implements ActionListener{
 
     }
     public void actionPerformed(ActionEvent ae){
+        String text=ae.getActionCommand();
+        if(text.equals("Add Customer Details"))
+        {
+            new AddCustomer();
 
+        }
+        else if(text.equals("Flight Details"))
+        {
+            new FlightInfo();
+        }
 
 
     }

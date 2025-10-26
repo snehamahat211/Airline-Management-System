@@ -100,7 +100,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         add(lblimage);
 
         getContentPane().setBackground(Color.WHITE);
-        setSize(750, 750);
+        setSize(750, 550);
         setLocation(300,150);
         setVisible(true);
 
