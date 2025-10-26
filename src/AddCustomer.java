@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class AddCustomer extends JFrame {
+public class AddCustomer extends JFrame implements ActionListener {
     JTextField nameTextField,nationfield,citizenfield,addressfield,phonefield;
     JRadioButton male,female;
     JButton save;
@@ -44,10 +46,10 @@ public class AddCustomer extends JFrame {
         citizenfield.setBounds(210, 240, 250, 30);
         add(citizenfield);
 
-        JLabel Address = new JLabel("Address:");
-        Address.setFont(new Font("Arial", Font.BOLD, 15));
-        Address.setBounds(80, 290, 150, 20);
-        add(Address);
+        JLabel address = new JLabel("Address:");
+        address.setFont(new Font("Arial", Font.BOLD, 15));
+        address.setBounds(80, 290, 150, 20);
+        add(address);
 
         addressfield= new JTextField();
         addressfield.setFont(new Font("Arial", Font.BOLD, 20));
@@ -76,8 +78,8 @@ public class AddCustomer extends JFrame {
         buttonGroup.add(female);
 
         JLabel phone = new JLabel("Phone:");
-        Address.setFont(new Font("Arial", Font.BOLD, 15));
-        Address.setBounds(80, 390, 150, 20);
+        phone.setFont(new Font("Arial", Font.BOLD, 15));
+        phone.setBounds(80, 390, 150, 20);
         add(phone);
 
         phonefield= new JTextField();
@@ -89,6 +91,7 @@ public class AddCustomer extends JFrame {
         save.setBackground(Color.BLACK);
         save.setForeground(Color.WHITE);
         save.setBounds(220,440,150,30);
+        save.addActionListener(this);
         add(save);
 
         ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("employee.png"));
@@ -96,28 +99,38 @@ public class AddCustomer extends JFrame {
         lblimage.setBounds(470,120,220,200);
         add(lblimage);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         getContentPane().setBackground(Color.WHITE);
         setSize(750, 750);
         setLocation(300,150);
         setVisible(true);
 
+    }
+
+    public void actionPerformed(ActionEvent e)
+    {
+        String name=nameTextField.getText();
+        String nationality=nationfield.getText();
+        String citizenship=citizenfield.getText();
+        String address=addressfield.getText();
+
+        String gender=null;
+        if(male.isSelected()){
+            gender="Male";
+        }else{
+            gender="Female";
+        }
+        String phone=phonefield.getText();
+
+        try{
+            Conn conn =new Conn();
+            String query="insert into passenger values('"+name+"','"+nationality+"','"+address+"','"+citizenship+"','"+gender+"','"+phone+"')";
+            conn.s.executeUpdate(query);
+            JOptionPane.showMessageDialog(null,"Customer Added Successfully");
 
 
-
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
 
     }
     public static void main (String[] args) {
