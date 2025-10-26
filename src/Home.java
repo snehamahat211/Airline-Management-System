@@ -28,9 +28,11 @@ public class Home extends JFrame implements ActionListener{
         menubar.add(details);
 
         JMenuItem FlightDetails=new JMenu("Flight Details");
+        FlightDetails.addActionListener(this);
         details.add(FlightDetails);
 
         JMenuItem customerDetails=new JMenu("Add Customer Details");
+        customerDetails.addActionListener(this);
         details.add(customerDetails);
 
         JMenuItem bookFlight =new JMenu("Book Flight");
@@ -74,7 +76,9 @@ public class Home extends JFrame implements ActionListener{
         setVisible(true);
 
     }
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent ae){
+
+
 
     }
 public static void main (String[] args){

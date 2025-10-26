@@ -126,6 +126,7 @@ public class AddCustomer extends JFrame implements ActionListener {
             String query="insert into passenger values('"+name+"','"+nationality+"','"+address+"','"+citizenship+"','"+gender+"','"+phone+"')";
             conn.s.executeUpdate(query);
             JOptionPane.showMessageDialog(null,"Customer Added Successfully");
+            setVisible(false);
 
 
         } catch(Exception ex){
