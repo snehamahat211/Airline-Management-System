@@ -84,10 +84,12 @@ public class BookFlight extends JFrame implements ActionListener {
 
 
 
-        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.png"));
-        JLabel lblimage=new JLabel(image);
-        lblimage.setBounds(670,120,250,250);
-        add(lblimage);
+        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.jpg"));
+        Image img = image.getImage().getScaledInstance(350, 250, Image.SCALE_DEFAULT);
+        ImageIcon image1 = new ImageIcon(img);
+        JLabel image2=new JLabel(image1);
+        image2.setBounds(620,80,400,600);
+        add(image2);
 
         getContentPane().setBackground(Color.WHITE);
         setSize(1100, 750);
