@@ -21,12 +21,13 @@ public class FlightInfo extends JFrame {
         jsp.setBounds(0,0,800,500);
         add(jsp);
 
-        add(table);
         setSize(800,500);
         setLocation(400,200);
+        setVisible(true);
 
     }
     public static void main(String[]args){
+
         new FlightInfo();
     }
 }
