@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.toedter.calendar.JDateChooser;
 
 
 public class BookFlight extends JFrame implements ActionListener {
@@ -82,6 +83,9 @@ public class BookFlight extends JFrame implements ActionListener {
          dot.setBounds(80, 590, 150, 20);
          add(dot);
 
+         JDateChooser dcdate =new JDateChooser();
+         dcdate.setBounds(200,590,200,25);
+         add(dcdate);
 
 
         ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.jpg"));
@@ -92,8 +96,8 @@ public class BookFlight extends JFrame implements ActionListener {
         add(image2);
 
         getContentPane().setBackground(Color.WHITE);
-        setSize(1100, 750);
-        setLocation(300,150);
+        setSize(1100, 660);
+        setLocation(100,30);
         setVisible(true);
 
     }
