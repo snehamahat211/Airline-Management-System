@@ -57,22 +57,6 @@ public class BookFlight extends JFrame implements ActionListener {
         gender.setBounds(80, 340, 150, 20);
         add(gender);
 
-        male = new JRadioButton("Male");
-        male.setFont(new Font("Arial", Font.BOLD, 20));
-        male.setBounds(210, 340, 90, 15);
-        male.setBackground(Color.WHITE);
-        add(male);
-
-        female = new JRadioButton("Female");
-        female.setFont(new Font("Arial", Font.BOLD, 20));
-        female.setBounds(340, 340, 100, 15);
-        female.setBackground(Color.WHITE);
-        add(female);
-
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(male);
-        buttonGroup.add(female);
-
         JLabel source = new JLabel("Source:");
         source.setFont(new Font("Arial", Font.BOLD, 15));
         source.setBounds(80, 390, 150, 20);
@@ -100,9 +84,9 @@ public class BookFlight extends JFrame implements ActionListener {
 
 
 
-        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("employee.png"));
+        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.png"));
         JLabel lblimage=new JLabel(image);
-        lblimage.setBounds(670,120,220,200);
+        lblimage.setBounds(670,120,250,250);
         add(lblimage);
 
         getContentPane().setBackground(Color.WHITE);
