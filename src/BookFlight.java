@@ -2,13 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+
 import com.toedter.calendar.JDateChooser;
 
 
 public class BookFlight extends JFrame implements ActionListener {
     JTextField citizenfield;
-    JRadioButton male,female;
-    JButton fetch;
+    JButton fetch,flights;
      BookFlight (){
 
         setLayout(null);
@@ -63,10 +64,43 @@ public class BookFlight extends JFrame implements ActionListener {
         source.setBounds(80, 390, 150, 20);
         add(source);
 
+         JComboBox<String> chsource = new JComboBox<>();
+         chsource.setFont(new Font("Arial", Font.PLAIN, 14));
+         chsource.setBounds(220, 390, 200, 30);
+         add(chsource);
+
          JLabel destination = new JLabel("Destination:");
          destination.setFont(new Font("Arial", Font.BOLD, 15));
          destination.setBounds(80, 440, 150, 20);
          add(destination);
+
+         JComboBox<String> chdest = new JComboBox<>();
+         chdest.setFont(new Font("Arial", Font.PLAIN, 14));
+         chdest.setBounds(220, 440, 200, 30);
+         add(chdest);
+
+         try {
+             Conn c = new Conn();
+             String query = "select * from flight";
+             ResultSet rs = c.s.executeQuery(query);
+
+             while (rs.next()) {
+                 chsource.addItem(rs.getString("Source"));
+                 chdest.addItem(rs.getString("Dest"));
+             }
+
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+
+         flights=new JButton("Flights");
+         flights.setBackground(Color.RED);
+         flights.setForeground(Color.WHITE);
+         flights.setBounds(480,140,130,30);
+         flights.addActionListener(this);
+         add(flights);
+
+
 
          JLabel Flightn = new JLabel("Flight Name:");
          Flightn.setFont(new Font("Arial", Font.BOLD, 15));
