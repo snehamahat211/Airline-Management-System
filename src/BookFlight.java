@@ -9,7 +9,12 @@ import com.toedter.calendar.JDateChooser;
 
 public class BookFlight extends JFrame implements ActionListener {
     JTextField citizenfield;
-    JButton fetch,flights;
+    JButton fetch, flights, flight;
+    JComboBox<String> chsource, chdest;
+    JDateChooser dcdate;
+
+    JLabel name, nationality, address, gender,source,destination,Flightn, Flightc,dot;
+
      BookFlight (){
 
         setLayout(null);
@@ -35,46 +40,44 @@ public class BookFlight extends JFrame implements ActionListener {
          fetch.addActionListener(this);
          add(fetch);
 
-
-
-        JLabel name = new JLabel("Name:");
-        name.setFont(new Font("Arial", Font.BOLD, 15));
-        name.setBounds(80, 190, 100, 20);
-        add(name);
+         name = new JLabel("Name:");
+         name.setFont(new Font("Arial", Font.BOLD, 15));
+         name.setBounds(80, 190, 100, 20);
+         add(name);
 
 
 
-        JLabel nationality = new JLabel("Nationality:");
+        nationality = new JLabel("Nationality:");
         nationality.setFont(new Font("Arial", Font.BOLD, 15));
         nationality.setBounds(80, 240, 100, 20);   //y=height of particular case +y axis
         add(nationality);
 
-        JLabel address = new JLabel("Address:");
+        address = new JLabel("Address:");
         address.setFont(new Font("Arial", Font.BOLD, 15));
         address.setBounds(80, 290, 150, 20);
         add(address);
 
-        JLabel gender = new JLabel("Gender:");
+        gender = new JLabel("Gender:");
         gender.setFont(new Font("Arial", Font.BOLD, 15));
         gender.setBounds(80, 340, 150, 20);
         add(gender);
 
-        JLabel source = new JLabel("Source:");
+        source = new JLabel("Source:");
         source.setFont(new Font("Arial", Font.BOLD, 15));
         source.setBounds(80, 390, 150, 20);
         add(source);
 
-         JComboBox<String> chsource = new JComboBox<>();
+         chsource = new JComboBox<>();
          chsource.setFont(new Font("Arial", Font.PLAIN, 14));
          chsource.setBounds(220, 390, 200, 30);
          add(chsource);
 
-         JLabel destination = new JLabel("Destination:");
+         destination = new JLabel("Destination:");
          destination.setFont(new Font("Arial", Font.BOLD, 15));
          destination.setBounds(80, 440, 150, 20);
          add(destination);
 
-         JComboBox<String> chdest = new JComboBox<>();
+         chdest = new JComboBox<>();
          chdest.setFont(new Font("Arial", Font.PLAIN, 14));
          chdest.setBounds(220, 440, 200, 30);
          add(chdest);
@@ -96,33 +99,45 @@ public class BookFlight extends JFrame implements ActionListener {
          flights=new JButton("Flights");
          flights.setBackground(Color.RED);
          flights.setForeground(Color.WHITE);
-         flights.setBounds(480,140,130,30);
+         flights.setBounds(480,440,130,30);
          flights.addActionListener(this);
          add(flights);
 
 
 
-         JLabel Flightn = new JLabel("Flight Name:");
+
+
+
+
+         Flightn = new JLabel("Flight Name:");
          Flightn.setFont(new Font("Arial", Font.BOLD, 15));
          Flightn.setBounds(80, 490, 150, 20);
          add(Flightn);
 
-         JLabel Flightc = new JLabel("Flight Code:");
+         Flightc = new JLabel("Flight Code:");
          Flightc.setFont(new Font("Arial", Font.BOLD, 15));
          Flightc.setBounds(80, 540, 150, 20);
          add(Flightc);
 
-         JLabel dot = new JLabel("Date of Travel:");
+         dot = new JLabel("Date of Travel:");
          dot.setFont(new Font("Arial", Font.BOLD, 15));
          dot.setBounds(80, 590, 150, 20);
          add(dot);
 
-         JDateChooser dcdate =new JDateChooser();
+         dcdate =new JDateChooser();
          dcdate.setBounds(200,590,200,25);
          add(dcdate);
 
+         flight=new JButton("Book Flights");
+         flight.setBackground(Color.GREEN);
+         flight.setForeground(Color.BLACK);
+         flight.setBounds(480,640,130,30);
+         flight.addActionListener(this);
+         add(flight);
 
-        ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.jpg"));
+
+
+         ImageIcon image =new ImageIcon(ClassLoader.getSystemResource("details.jpg"));
         Image img = image.getImage().getScaledInstance(350, 250, Image.SCALE_DEFAULT);
         ImageIcon image1 = new ImageIcon(img);
         JLabel image2=new JLabel(image1);
@@ -130,7 +145,7 @@ public class BookFlight extends JFrame implements ActionListener {
         add(image2);
 
         getContentPane().setBackground(Color.WHITE);
-        setSize(1100, 660);
+        setSize(1100, 760);
         setLocation(100,30);
         setVisible(true);
 
@@ -138,6 +153,7 @@ public class BookFlight extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e)
     {
+        if (ae.getSource()==fetch)
 
 
     }
