@@ -42,24 +42,24 @@ public class BookFlight extends JFrame implements ActionListener {
 
          name = new JLabel("Name:");
          name.setFont(new Font("Arial", Font.BOLD, 15));
-         name.setBounds(80, 190, 100, 20);
+         name.setBounds(80, 190, 300, 20);
          add(name);
 
 
 
         nationality = new JLabel("Nationality:");
         nationality.setFont(new Font("Arial", Font.BOLD, 15));
-        nationality.setBounds(80, 240, 100, 20);   //y=height of particular case +y axis
+        nationality.setBounds(80, 240, 300, 20);   //y=height of particular case +y axis
         add(nationality);
 
         address = new JLabel("Address:");
         address.setFont(new Font("Arial", Font.BOLD, 15));
-        address.setBounds(80, 290, 150, 20);
+        address.setBounds(80, 290, 350, 20);
         add(address);
 
         gender = new JLabel("Gender:");
         gender.setFont(new Font("Arial", Font.BOLD, 15));
-        gender.setBounds(80, 340, 150, 20);
+        gender.setBounds(80, 340, 350, 20);
         add(gender);
 
         source = new JLabel("Source:");
@@ -155,7 +155,7 @@ public class BookFlight extends JFrame implements ActionListener {
     {
         if (e.getSource()==fetch){
             try {
-                String id = Citizenship.getText();
+                String id = citizenfield.getText();
                 Conn c = new Conn();
                 String query = "select * from passenger where citizenship = '" + id + "'";
                 ResultSet rs = c.s.executeQuery(query);
