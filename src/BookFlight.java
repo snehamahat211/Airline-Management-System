@@ -13,7 +13,7 @@ public class BookFlight extends JFrame implements ActionListener {
     JComboBox<String> chsource, chdest;
     JDateChooser dcdate;
 
-    JLabel name, nationality, address, gender,source,destination,Flightn, Flightc,dot;
+    JLabel name, nationality, address, gender,source,Citizenship,destination,Flightn, Flightc,dot;
 
      BookFlight (){
 
@@ -23,7 +23,7 @@ public class BookFlight extends JFrame implements ActionListener {
         heading.setFont(new Font("Times New Roman",Font.BOLD,20));
         add(heading);
 
-         JLabel Citizenship = new JLabel("Citizenship no:");
+         Citizenship = new JLabel("Citizenship no:");
          Citizenship.setFont(new Font("Arial", Font.BOLD, 15));
          Citizenship.setBounds(80, 140, 150, 20);
          add(Citizenship);
@@ -153,7 +153,26 @@ public class BookFlight extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e)
     {
-        if (ae.getSource()==fetch)
+        if (e.getSource()==fetch){
+            try {
+                String id = Citizenship.getText();
+                Conn c = new Conn();
+                String query = "select * from passenger where citizenship = '" + id + "'";
+                ResultSet rs = c.s.executeQuery(query);
+
+                if (rs.next()) {
+                    name.setText("Name: " + rs.getString("name"));
+                    nationality.setText("Nationality: " + rs.getString("nationality"));
+                    address.setText("Address: " + rs.getString("address"));
+                    gender.setText("Gender: " + rs.getString("gender"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No record found");
+                }
+
+            } catch (Exception ae) {
+                ae.printStackTrace();
+            }
+    }
 
 
     }
