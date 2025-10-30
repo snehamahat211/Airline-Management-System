@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import com.toedter.calendar.JDateChooser;
+
+import java.text.SimpleDateFormat;
 import  java.util.*;
 
 public class BookFlight extends JFrame implements ActionListener {
@@ -149,10 +151,10 @@ public class BookFlight extends JFrame implements ActionListener {
                 ResultSet rs = c.s.executeQuery(query);
 
                 if (rs.next()) {
-                    name.setText("<html>Name :&nbsp;&nbsp;&nbsp;" + rs.getString("name") + "</html>");
-                    nationality.setText("<html>Nationality :&nbsp;&nbsp;&nbsp;" + rs.getString("nationality") + "</html>");
-                    address.setText("<html>Address :&nbsp;&nbsp;&nbsp;" + rs.getString("address") + "</html>");
-                    gender.setText("<html>Gender :&nbsp;&nbsp;&nbsp;" + rs.getString("gender") + "</html>");
+                    name.setText("Name :" + rs.getString("name") );
+                    nationality.setText("Nationality :" + rs.getString("nationality") );
+                    address.setText("Address :" + rs.getString("address") );
+                    gender.setText("Gender :" + rs.getString("gender") );
                 } else {
                     JOptionPane.showMessageDialog(null, "No record found");
                 }
@@ -182,21 +184,33 @@ public class BookFlight extends JFrame implements ActionListener {
         }
         else if (e.getSource() == flight) {
             String citizenship = citizenfield.getText();
-            String name1 = name.getText();
-            String nationality1 = nationality.getText();
-            String flightname = Flightn.getText();
-            String flightcode = Flightc.getText();
+
+            // Clean label text values before inserting
+            String name1 = name.getText().replace("Name :", "").trim();
+            String nationality1 = nationality.getText().replace("Nationality :", "").trim();
+            String flightname = Flightn.getText().replace("Flight Name:", "").trim();
+            String flightcode = Flightc.getText().replace("Flight Code:", "").trim();
             String src = (String) chsource.getSelectedItem();
             String dest = (String) chdest.getSelectedItem();
-            String gender1 = gender.getText();
-            String ddate = ((JTextField) dcdate.getDateEditor().getUiComponent()).getText();
+            String gender1 = gender.getText().replace("Gender :", "").trim();
+            Date selectedDate = dcdate.getDate();  // java.util.Date
+            String ddate = null;
+
+            if (selectedDate != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                ddate = sdf.format(selectedDate);  // formats as 2025-10-30
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a date of travel!");
+                return; // stop further execution
+            }
 
             try {
                 Conn conn = new Conn();
                 Random random = new Random();
                 int pnr = random.nextInt(1000000);
 
-                String query = "insert into reservation values('PNR-" + pnr + "', '" + name1 + "', '" + nationality1 +
+                // Insert cleaned values into the table
+                String query = "INSERT INTO reservation VALUES('PNR-" + pnr + "', '" + name1 + "', '" + nationality1 +
                         "', '" + flightname + "', '" + flightcode + "', '" + src + "', '" + dest + "', '" +
                         gender1 + "', '" + citizenship + "', '" + ddate + "')";
 
@@ -207,6 +221,7 @@ public class BookFlight extends JFrame implements ActionListener {
                 e1.printStackTrace();
             }
         }
+
 
     }
 
