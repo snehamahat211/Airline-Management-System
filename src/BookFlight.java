@@ -185,7 +185,7 @@ public class BookFlight extends JFrame implements ActionListener {
         else if (e.getSource() == flight) {
             String citizenship = citizenfield.getText();
 
-            // Clean label text values before inserting
+
             String name1 = name.getText().replace("Name :", "").trim();
             String nationality1 = nationality.getText().replace("Nationality :", "").trim();
             String flightname = Flightn.getText().replace("Flight Name:", "").trim();
@@ -193,30 +193,31 @@ public class BookFlight extends JFrame implements ActionListener {
             String src = (String) chsource.getSelectedItem();
             String dest = (String) chdest.getSelectedItem();
             String gender1 = gender.getText().replace("Gender :", "").trim();
-            Date selectedDate = dcdate.getDate();  // java.util.Date
+            Date selectedDate = dcdate.getDate();
             String ddate = null;
 
             if (selectedDate != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                ddate = sdf.format(selectedDate);  // formats as 2025-10-30
+                ddate = sdf.format(selectedDate);
             } else {
                 JOptionPane.showMessageDialog(null, "Please select a date of travel!");
-                return; // stop further execution
+                return;
             }
 
             try {
                 Conn conn = new Conn();
                 Random random = new Random();
                 int pnr = random.nextInt(1000000);
+                int TIC= random.nextInt(10000);
 
-                // Insert cleaned values into the table
-                String query = "INSERT INTO reservation VALUES('PNR-" + pnr + "', '" + name1 + "', '" + nationality1 +
+
+                String query = "INSERT INTO reservation VALUES('PNR-" + pnr + "', 'TIC-" + TIC+ "', '" + name1 + "', '" + nationality1 +
                         "', '" + flightname + "', '" + flightcode + "', '" + src + "', '" + dest + "', '" +
                         gender1 + "', '" + citizenship + "', '" + ddate + "')";
-
                 conn.s.executeUpdate(query);
 
                 JOptionPane.showMessageDialog(null, "Ticket Booked Successfully!");
+                setVisible(false);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
