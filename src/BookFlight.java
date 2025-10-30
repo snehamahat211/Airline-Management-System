@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import com.toedter.calendar.JDateChooser;
+import  java.util.*;
 
 public class BookFlight extends JFrame implements ActionListener {
     JTextField citizenfield;
     JButton fetch, flights, flight;
     JComboBox<String> chsource, chdest;
     JDateChooser dcdate;
+
 
     JLabel name, nationality, address, gender, source, Citizenship, destination, Flightn, Flightc, dot;
 
@@ -158,7 +160,7 @@ public class BookFlight extends JFrame implements ActionListener {
             } catch (Exception ae) {
                 ae.printStackTrace();
             }
-        }else if (e.getSource() == flights) {
+        } else if (e.getSource() == flights) {
             try {
                 String src = (String) chsource.getSelectedItem();
                 String dest = (String) chdest.getSelectedItem();
@@ -177,12 +179,38 @@ public class BookFlight extends JFrame implements ActionListener {
             } catch (Exception ae) {
                 ae.printStackTrace();
             }
-        } else if (e.getSource() == flight) {
+        }
+        else if (e.getSource() == flight) {
+            String citizenship = citizenfield.getText();
+            String name1 = name.getText();
+            String nationality1 = nationality.getText();
+            String flightname = Flightn.getText();
+            String flightcode = Flightc.getText();
+            String src = (String) chsource.getSelectedItem();
+            String dest = (String) chdest.getSelectedItem();
+            String gender1 = gender.getText();
+            String ddate = ((JTextField) dcdate.getDateEditor().getUiComponent()).getText();
 
+            try {
+                Conn conn = new Conn();
+                Random random = new Random();
+                int pnr = random.nextInt(1000000);
+
+                String query = "insert into reservation values('PNR-" + pnr + "', '" + name1 + "', '" + nationality1 +
+                        "', '" + flightname + "', '" + flightcode + "', '" + src + "', '" + dest + "', '" +
+                        gender1 + "', '" + citizenship + "', '" + ddate + "')";
+
+                conn.s.executeUpdate(query);
+
+                JOptionPane.showMessageDialog(null, "Ticket Booked Successfully!");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+        public static void main (String[]args){
+            new BookFlight();
         }
     }
-
-    public static void main(String[] args) {
-        new BookFlight();
-    }
-}
