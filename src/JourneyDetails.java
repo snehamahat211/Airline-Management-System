@@ -5,22 +5,18 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
 public class JourneyDetails extends JFrame implements ActionListener {
+    JTable table;
     public JourneyDetails() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-        JTable table= new JTable();
 
-        try{
-            Conn conn = new Conn();
-            ResultSet rs =conn.s.executeQuery("select * from flight ");
-            table.setModel (DbUtils.resultSetToTableModel(rs));
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        table= new JTable();
+
+
         JScrollPane jsp=new JScrollPane(table);
-        jsp.setBounds(0,0,800,500);
+        jsp.setBounds(0,60,800,300);
         add(jsp);
 
         setSize(800,500);
@@ -28,13 +24,21 @@ public class JourneyDetails extends JFrame implements ActionListener {
         setVisible(true);
 
     }
-    public static void main(String[]args){
-
-        new FlightInfo();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
+        try{
+            Conn conn = new Conn();
+            ResultSet rs =conn.s.executeQuery("select * from reservation");
+            table.setModel (DbUtils.resultSetToTableModel(rs));
+
+        }catch(Exception ae){
+            ae.printStackTrace();
+        }
 
     }
+    public static void main(String[]args){
+
+        new JourneyDetails();
+    }
+
 }
