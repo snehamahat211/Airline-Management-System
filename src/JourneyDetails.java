@@ -29,6 +29,7 @@ public class JourneyDetails extends JFrame implements ActionListener {
         show.setForeground(Color.WHITE);
         show.setFont(new Font("Times New Roman", Font.BOLD, 20));
         show.setBounds(280,10,100,30);
+        show.addActionListener(this);
         add(show);
 
 
@@ -41,10 +42,10 @@ public class JourneyDetails extends JFrame implements ActionListener {
 
 
         JScrollPane jsp=new JScrollPane(table);
-        jsp.setBounds(0,60,800,300);
+        jsp.setBounds(0,60,1067,300);
         add(jsp);
 
-        setSize(800,500);
+        setSize(1080,500);
         setLocation(400,200);
         setVisible(true);
 
@@ -53,7 +54,12 @@ public class JourneyDetails extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try{
             Conn conn = new Conn();
-            ResultSet rs =conn.s.executeQuery("select * from reservation");
+            ResultSet rs =conn.s.executeQuery("select * from reservation where PNR='"+pnrfield.getText()+"'");
+
+
+            if(!rs.isBeforeFirst()){
+                JOptionPane.showMessageDialog(null,"No Information Found");
+            }
             table.setModel (DbUtils.resultSetToTableModel(rs));
 
         }catch(Exception ae){
