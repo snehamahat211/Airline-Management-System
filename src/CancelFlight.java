@@ -4,23 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import com.toedter.calendar.JDateChooser;
-
-import java.text.SimpleDateFormat;
 import  java.util.*;
 
 public class CancelFlight extends JFrame implements ActionListener {
     JTextField pnrfield;
-    JButton fetch, flights, flight;
-    JComboBox<String> chsource, chdest;
+    JButton fetch, flight;
     JDateChooser dcdate;
 
 
-    JLabel name, nationality, address, gender, source, pnr, destination, Flightn, Flightc, dot;
+    JLabel name, pnr, Flightc,cancelt,dot,canceltext;
 
     CancelFlight() {
 
         setLayout(null);
         JLabel heading = new JLabel("CANCELLATION");
+
+        Random random =new Random ();
+
         heading.setBounds(450, 50, 500, 35);
         heading.setFont(new Font("Times New Roman", Font.BOLD, 20));
         add(heading);
@@ -48,6 +48,18 @@ public class CancelFlight extends JFrame implements ActionListener {
         add(name);
 
 
+        cancelt = new JLabel("Cancel Ticket:");
+        cancelt.setFont(new Font("Arial", Font.BOLD, 15));
+        cancelt.setBounds(80, 540, 300, 20);
+        add(cancelt);
+
+        canceltext = new JLabel(""+random.nextInt(1000000));
+        canceltext.setFont(new Font("Arial", Font.BOLD, 15));
+        canceltext.setBounds(120, 540, 300, 20);
+        add(canceltext);
+
+
+
         Flightc = new JLabel("Flight Code:");
         Flightc.setFont(new Font("Arial", Font.BOLD, 15));
         Flightc.setBounds(80, 540, 300, 20);
@@ -69,18 +81,13 @@ public class CancelFlight extends JFrame implements ActionListener {
         flight.addActionListener(this);
         add(flight);
 
-        ImageIcon image = new ImageIcon(ClassLoader.getSystemResource("details.jpg"));
-        Image img = image.getImage().getScaledInstance(350, 250, Image.SCALE_DEFAULT);
-        ImageIcon image1 = new ImageIcon(img);
-        JLabel image2 = new JLabel(image1);
-        image2.setBounds(620, 80, 400, 600);
-        add(image2);
-
         getContentPane().setBackground(Color.WHITE);
         setSize(1100, 760);
         setLocation(100, 30);
         setVisible(true);
     }
+
+
 
 
     public static void main (String[]args){
