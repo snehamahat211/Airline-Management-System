@@ -19,3 +19,14 @@ Exception Handling: To handle runtime errors smoothly.
 Modular Design: For separating booking, flight, and staff modules.
 
 ## UI
+#### 1.Homepage Page
+![Output](homepage.png)
+
+#### 2. Page
+![Output](tabs.png)
+
+
+
+
+
+
