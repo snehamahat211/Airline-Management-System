@@ -29,6 +29,9 @@ Modular Design: For separating booking, flight, and staff modules.
 #### 3.details
 ![Output](details.png)
 
+#### 3.info
+![Output](info.png)
+
 #### 4. datefix
 ![Output](datefix.png)
 
