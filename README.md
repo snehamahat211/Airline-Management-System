@@ -42,7 +42,7 @@ Modular Design: For separating booking, flight, and staff modules.
 ![Output](login.png)
 
 #### 2. Passengerinfo
-![Output](passenger.png)
+![Output](passengerinfo.png)
 
 
 #### 3.flight
@@ -50,6 +50,10 @@ Modular Design: For separating booking, flight, and staff modules.
 
 #### 4. reservation
 ![Output](reservation.png)
+
+
+### Conclusion
+
 
 
 
