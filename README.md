@@ -41,9 +41,8 @@ Modular Design: For separating booking, flight, and staff modules.
 #### 1.login table
 ![Output](login.png)
 
-#### 2. Passengerinfo
+#### 2. Tables
 ![Output](passengerinfo.png)
-
 
 #### 3.flight
 ![Output](flight.png)
