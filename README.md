@@ -52,7 +52,7 @@ Modular Design: For separating booking, flight, and staff modules.
 
 
 ### Conclusion
-
+The development of the Airline Management System in Java has successfully provided a robust, user-friendly, and efficient solution for automating airline operations. By utilizing Java Swing for the frontend and MySQL for the backend, the system allows for seamless passenger registration, flight scheduling, and ticket booking. 
 
 
 
